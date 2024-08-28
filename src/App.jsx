@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Layout from "./layout/layout";
 import Page1 from "./pages/page";
+import './input.css'
 import { AppProvider } from "./context/appContextProvider"; // Import the AppProvider
 
 function App() {

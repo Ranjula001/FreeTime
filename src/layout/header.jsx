@@ -19,6 +19,7 @@ import {
   Search as SearchIcon,
 } from "@mui/icons-material";
 import { styled, alpha } from "@mui/material/styles";
+import { MdAccountCircle } from "react-icons/md";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -159,7 +160,7 @@ export default function Header() {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="fixed" color="inherit" className="bg-gray-800 ">
+      <AppBar position="fixed" color="inherit" className="bg-gray-800">
         <Toolbar>
           <IconButton
             size="large"
@@ -216,9 +217,7 @@ export default function Header() {
               onClick={handleProfileMenuOpen}
               color="inherit"
             >
-
-              <AccountCircle />
-
+              <MdAccountCircle size={30}/>
             </IconButton>
           </Box>
           <Box sx={{ display: { xs: "flex", md: "none" } }}>
