@@ -1,17 +1,19 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Layout from "./layout/layout";
-import Page1 from "./pages/page";
 import './input.css'
-import { AppProvider } from "./context/appContextProvider"; // Import the AppProvider
+import { AppProvider } from "./context/appContextProvider"; 
+import Chat from "./pages/chat";
+import Blank from "./pages/noNotification";
 
 function App() {
   return (
     <AppProvider>
       <Router>
         <Routes>
-          <Route path="/" element={<Layout />}>
-            <Route path="/page" element={<Page1 />} />
+          <Route path="/" element={<Layout/>}>
+            <Route path="/chat" element={<Chat/>} />
+            <Route path="/" element={<Blank/>} />
           </Route>
         </Routes>
       </Router>
