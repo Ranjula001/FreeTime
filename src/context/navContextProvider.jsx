@@ -1,20 +1,21 @@
-import { createContext, useContext, useState } from "react";
+import React, { createContext, useContext, useState } from "react";
 
 const NavContext = createContext();
 
-// eslint-disable-next-line react/prop-types
-const NavProvider = ({ children }) => {
+export const useNavContext = () => {
+  return useContext(NavContext);
+};
+
+export default function NavProvider({ children }) {
   const [navEnabled, setNavEnabled] = useState(false);
 
+  const toggleNav = () => {
+    setNavEnabled((prev) => !prev);
+  };
+
   return (
-    <NavContext.Provider value={{ navEnabled, setNavEnabled }}>
+    <NavContext.Provider value={{ navEnabled, toggleNav }}>
       {children}
     </NavContext.Provider>
   );
-};
-
-export default NavProvider;
-
-export const NavState = () => {
-  return useContext(NavContext);
-};
+}

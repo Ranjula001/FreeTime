@@ -19,6 +19,7 @@ import {
   Search as SearchIcon,
 } from "@mui/icons-material";
 import { styled, alpha } from "@mui/material/styles";
+import { MdAccountCircle } from "react-icons/md";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -159,7 +160,7 @@ export default function Header() {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
+      <AppBar position="fixed" color="inherit" className="bg-gray-800">
         <Toolbar>
           <IconButton
             size="large"
@@ -170,15 +171,17 @@ export default function Header() {
           >
             <MenuIcon />
           </IconButton>
-          <Typography
+
+          {/* <Typography
             variant="h6"
             noWrap
             component="div"
             sx={{ display: { xs: "none", sm: "block" } }}
           >
             MUI
-          </Typography>
-          <Search>
+          </Typography> */}
+
+          {/* <Search>
             <SearchIconWrapper>
               <SearchIcon />
             </SearchIconWrapper>
@@ -186,10 +189,11 @@ export default function Header() {
               placeholder="Search…"
               inputProps={{ "aria-label": "search" }}
             />
-          </Search>
+          </Search> */}
+
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: "none", md: "flex" } }}>
-            <IconButton size="large" aria-label="show 4 new mails" color="inherit">
+            {/* <IconButton size="large" aria-label="show 4 new mails" color="inherit">
               <Badge badgeContent={4} color="error">
                 <MailIcon />
               </Badge>
@@ -202,7 +206,8 @@ export default function Header() {
               <Badge badgeContent={17} color="error">
                 <NotificationsIcon />
               </Badge>
-            </IconButton>
+            </IconButton> */}
+
             <IconButton
               size="large"
               edge="end"
@@ -212,7 +217,7 @@ export default function Header() {
               onClick={handleProfileMenuOpen}
               color="inherit"
             >
-              <AccountCircle />
+              <MdAccountCircle size={30}/>
             </IconButton>
           </Box>
           <Box sx={{ display: { xs: "flex", md: "none" } }}>

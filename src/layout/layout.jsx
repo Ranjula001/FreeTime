@@ -1,38 +1,35 @@
 import React from "react";
-import { Navigate, Outlet } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import { useAppContext } from "../context/appContextProvider";
 import NavProvider from "../context/navContextProvider";
-import Header from "./Header";
-import Drawer from "./drawer";
+import DrawerComponent from "./drawer";
+import Header from "./header";
+import { Box, CssBaseline } from "@mui/material";
 
 function Layout() {
   const { navEnabled } = useAppContext();
 
-  if (navEnabled) {
-    return (
-      <NavProvider>
-        <div className="flex h-screen">
-          {/* Drawer (Sidebar) */}
-          <div className="fixed z-50 h-full xl:relative xl:w-64 bg-gray-800 text-white">
-            <Drawer />
-          </div>
-          
-          {/* Main Content */}
-          <div className="flex-1 flex flex-col min-h-full bg-gray-100 pl-64">
-            {/* Header */}
-            <Header />
-
-            {/* Main Outlet for Content */}
-            <main className="flex-grow overflow-y-auto p-4">
-              <Outlet />
-            </main>
-          </div>
-        </div>
-      </NavProvider>
-    );
-  }
-
-  return <Navigate to="/" />;
+  return (
+    <NavProvider>
+      <Box sx={{ display: "flex" }}>
+        <DrawerComponent />
+        <Box
+          sx={{
+            flexGrow: 1,
+            display: "flex",
+            flexDirection: "column",
+            ml: { xs: 0, md: `${322}px` },
+            width: "100%",
+          }}
+        >
+          <Header />
+          <Box sx={{ flexGrow: 1 }}>
+            <Outlet />
+          </Box>
+        </Box>
+      </Box>
+    </NavProvider>
+  );
 }
 
 export default Layout;
